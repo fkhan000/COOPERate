@@ -10,9 +10,9 @@ CREATE DATABASE cooperate;
 CREATE TABLE Users (
   id varchar PRIMARY KEY NOT NULL, --username
   email_address varchar NOT NULL, --must be a cooper email address
-  hashed_password integer NOT NULL, --salted hashed password used
+  hashed_password varchar NOT NULL, --salted hashed password used
   karma int NOT NULL DEFAULT 0, --net number of likes that a user gets
-  created_at timestamp NOT NULL
+  created_at timestamp NOT NULL DEFAULT NOW()
 );
 
 --This table stores course information and the aggregate rating
@@ -41,7 +41,7 @@ CREATE TABLE Reviews (
   prof_rating float NOT NULL, --prof rating 0 to 1 in increments of .2
   net_likes integer NOT NULL DEFAULT 0, --net number of likes given by users
   hyperlink varchar, --hyperlink to the google drive folder in which any attached documents for review are stored
-  created_at timestamp NOT NULL,
+  created_at timestamp NOT NULL DEFAULT NOW(),
 
   PRIMARY KEY(review_id),
   FOREIGN KEY (course_id) REFERENCES Course,
@@ -58,4 +58,3 @@ CREATE TABLE Likes (
   FOREIGN KEY (user_id) REFERENCES Users,
   FOREIGN KEY (review_id) REFERENCES Reviews
 );
-
