@@ -12,8 +12,12 @@ public class Main {
         try {
             Connection connection = dcm.getConnection();
             UserDao userDao = new UserDao(connection);
-            User user = userDao.findById("sam123");
-            System.out.println(user);
+            User user = new User();
+            user.setUserName("sam123");
+            user.setPassword("password");
+            user.setEmail("sam123@cooper.edu");
+            User account = userDao.create(user);
+            System.out.println(account);
 
         }
         catch(SQLException e) {

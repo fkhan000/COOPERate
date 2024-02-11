@@ -12,6 +12,7 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
         super();
         this.connection = connection;
     }
-
     public abstract T findById(String id);
+
+    public abstract T create(T dto);
 }
