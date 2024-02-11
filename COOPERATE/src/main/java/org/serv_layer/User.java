@@ -3,62 +3,65 @@ package org.serv_layer;
 import java.sql.Timestamp;
 
 public class User implements DataTransferObject{
-    private String userName;
-    private String password;
 
-    private String email;
-    private int karma;
+        private int id;
+        private String userName;
+        private String password;
 
-    private Timestamp timestamp;
+        private String email;
+        private int karma;
 
-    public String getId() {
-        return userName;
-    }
+        private Timestamp timestamp;
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+        public int getId() {return id;}
 
-    public String getPassword() {
-        return password;
-    }
+        public void setId(int id) {this.id = id;}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        public String getUserName() {return userName;}
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public String getPassword() {
+            return password;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
-    public int getKarma(){
-        return karma;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public void setKarma(int karma){
-        this.karma = karma;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public Timestamp getTimestamp(){
-        return timestamp;
-    }
+        public int getKarma(){
+            return karma;
+        }
 
-    public void setTimestamp(Timestamp timestamp){
-        this.timestamp = timestamp;
-    }
+        public void setKarma(int karma){
+            this.karma = karma;
+        }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ",karma='" + karma + '\'' +
-                ",created_at='" + timestamp +
-                '}';
-    }
+        public Timestamp getTimestamp(){
+            return timestamp;
+        }
+
+        public void setTimestamp(Timestamp timestamp){
+            this.timestamp = timestamp;
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    ", userName='" + userName + '\'' +
+                    ", password='" + password + '\'' +
+                    ", email='" + email + '\'' +
+                    ",karma='" + karma + '\'' +
+                    ",created_at='" + timestamp +
+                    '}';
+        }
 }
