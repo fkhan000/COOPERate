@@ -47,7 +47,7 @@ const CourseProfile = () => {
           <a href = "/" class="button-link">
             <button class="button"><i className="fas fa-info-circle"></i> About Us</button>
           </a>
-          <a href = "https://drive.google.com/drive/u/2/folders/1qej-Xkxx8fBXSTjRDwYHEwKpz5JJsphx" class="button-link">
+          <a href = "https://drive.google.com/drive/folders/1NLXES-udQatJtsCt1JpsYBuzXsuuwtAI?usp=drive_link" class="button-link">
             <button class="button"><i class="fas fa-archive"></i> Checkout Our Archive</button>
           </a>
           <a href = "/" class = "button-link">

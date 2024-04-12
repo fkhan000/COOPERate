@@ -9,6 +9,7 @@ import UserPage from './Pages/UserProfile.js'
 import CoursePage from './Pages/CourseProfile.js'
 import ProfessorPage from './Pages/ProfessorProfile.js'
 import useUser from "./hooks/useUser";
+import ForgotPasswordPage from "./Pages/ForgotPassword.js";
 
 
 
@@ -53,10 +54,10 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<LoginPage/>} />
                     <Route path="/create-account" element={<MakeUserPage/>} />
+                    <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 </Routes>
             </Router>
         );
-
   };
   
  root.render(<App/>);

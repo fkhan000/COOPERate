@@ -12,6 +12,10 @@ const LoginPage = () => {
 
     const logIn = async () => {
         try {
+            if (!email.endsWith("@cooper.edu")) {
+                setError("Email needs to be a cooper.edu email!");
+                return;
+            }
             await signInWithEmailAndPassword(getAuth(), email, password);
             
             const userDetails = await fetch("http://localhost:8080/Users/email/" + email);
@@ -34,6 +38,7 @@ const LoginPage = () => {
 
 
 
+
     return (
     <div className="Login">
       <nav className="container-fluid">
@@ -50,6 +55,7 @@ const LoginPage = () => {
           <input  type = "text" placeholder="email@cooper.edu" value = {email} onChange={e=>setEmail(e.target.value)} />
           <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
           <button onClick={logIn}>Log In</button>
+          <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
         </main>
         {error && <p className="error-message">{error}</p>}
       </div>

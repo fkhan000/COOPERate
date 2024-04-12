@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged} from "firebase/auth";
 
 
 const CreateAccountPage = () => {
@@ -11,19 +11,50 @@ const CreateAccountPage = () => {
     const [error, setError] = useState("");
     const [verifSent, setVerifSent] = useState("");
     const navigate = useNavigate();
+    const [passwordStrength, setPasswordStrength] = useState("");
 
+    const handlePasswordChange = (event) => {
+        const newPassword = event.target.value;
+        setPassword(newPassword);
+        setPasswordStrength(checkPasswordStrength(newPassword));
+    };
+
+const checkPasswordStrength = (password) => {
+    const minLength = 8;
+    const minSpecialChars = 1;
+    const minNumbers = 1;
+    const minUpperCase = 1;
+
+    const hasSpecialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    const hasNumbers = /\d/;
+    const hasUpperCase = /[A-Z]/;
+
+    let score = 0;
+    if (password.length >= minLength) score++;
+    if (hasSpecialChars.test(password)) score++;
+    if (hasUpperCase.test(password)) score++;
+
+    if (score < 2) return "Weak";
+    if (score === 2) return "Medium";
+    return "Strong";
+  };
     const createAccount = async () => {
         try {
             if (password !== confirmPassword) {
                 setError("Password and confirm password do not match");
                 return;
             }
+            if (passwordStrength !== "Strong" && passwordStrength !== "Medium"){
+                setError(`Password strength is: ${passwordStrength}`);
+                return;
+            }
+
             if (!email.endsWith("@cooper.edu")) {
                 setError("Email needs to be a cooper.edu email!");
                 return;
             }
 
-            
+
             const userDetails = await fetch("http://localhost:8080/Users/username/" + username)
 
             const userExists = await userDetails.json()
@@ -34,7 +65,7 @@ const CreateAccountPage = () => {
                 return;
             }
 
-            
+
             const auth = getAuth();
             const userCredential =  await createUserWithEmailAndPassword(auth, email, password);
 
@@ -42,8 +73,8 @@ const CreateAccountPage = () => {
             await sendEmailVerification(auth.currentUser);
 
             await new Promise( (resolve) => {
-                
-                
+
+
                 const interval = setInterval( () => {
                     const currentUser = auth.currentUser;
                     console.log(currentUser);
@@ -75,7 +106,7 @@ const CreateAccountPage = () => {
                     hashed_password: password
                 })
             });
-            
+
             const userInfo = await fetch("http://localhost:8080/Users/email/" + email);
             const user = await userInfo.json();
 
@@ -83,7 +114,7 @@ const CreateAccountPage = () => {
             localStorage.setItem("username", user.userName);
             localStorage.setItem("user_id", Number(user.id));
             localStorage.setItem("karma", parseFloat(user.karma));
-            
+
             navigate("/");
             window.location.reload();
 
@@ -91,6 +122,18 @@ const CreateAccountPage = () => {
             setError(e.message);
         }
     };
+
+    const SliderBar = ({ color }) => (
+        <div
+            style={{
+                width: "20%",
+                height: "10px",
+                borderRadius: "5px",
+                background: color,
+                marginBottom: "10px",
+            }}
+        ></div>
+        );
 
     const pageStyle = {
         display: 'flex',
@@ -159,8 +202,9 @@ const CreateAccountPage = () => {
                 type="password"
                 placeholder="Your password"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={e => handlePasswordChange(e)}
             />
+
             <input
                 style={inputStyle}
                 type="password"
@@ -168,10 +212,31 @@ const CreateAccountPage = () => {
                 value={confirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
             />
+
+            {passwordStrength && (
+                <>
+                    <p>Password Strength:</p>
+                    <SliderBar color={getPasswordStrengthColor(passwordStrength)} />
+                </>
+            )}
             <button style={buttonStyle} onClick={createAccount}>Create Account</button>
             <Link to="/" style={linkStyle}>Already have an account? Log in here.</Link>
+            <Link to="/forgot-password" style={linkStyle}>Forgot Password?</Link>
         </div>
     );
 }
 
 export default CreateAccountPage;
+
+const getPasswordStrengthColor = (strength) => {
+    switch (strength) {
+        case 'Weak':
+            return 'red';
+        case 'Medium':
+            return 'orange';
+        case 'Strong':
+            return 'green';
+        default:
+            return 'black';
+    }
+};
