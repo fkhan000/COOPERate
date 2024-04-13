@@ -1,12 +1,13 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './Login.css';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
@@ -31,8 +32,19 @@ const LoginPage = () => {
             console.log(user.id);
             
             window.location.reload();
-        } catch (e) {
-            setError("Invalid Email Address and/or Password!");
+        } catch (err) {
+          if (err.code === 'auth/invalid-email') {
+            toast.error('Invalid email ID');
+          }
+          if (err.code === 'auth/user-not-found') {
+              toast.error('Please check your email');
+          }
+          if (err.code === 'auth/wrong-password') {
+              toast.error('Please check your password');
+          }
+          if (err.code === 'auth/too-many-requests') {
+              toast.error('Too many attempts, please try again later');
+          }
         }
     };
 
@@ -44,21 +56,21 @@ const LoginPage = () => {
       <nav className="container-fluid">
         <ul><li><strong>COOPERATE</strong></li></ul>
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li><a href="/AboutUs">About Us</a></li>
           <li><a href="/create-account" className="make-account-btn" role="button">Make an Account</a></li>
         </ul>
       </nav>
       <div className = "container">
         <main className="login-form">
 
-          <h2>Login</h2>
-          <input  type = "text" placeholder="email@cooper.edu" value = {email} onChange={e=>setEmail(e.target.value)} />
+          <h2>Sign In</h2>
+          <input  type = "text" placeholder="Email Address" value = {email} onChange={e=>setEmail(e.target.value)} />
           <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
           <button onClick={logIn}>Log In</button>
           <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
         </main>
-        {error && <p className="error-message">{error}</p>}
       </div>
+      <ToastContainer />
     </div>
   );
 }
