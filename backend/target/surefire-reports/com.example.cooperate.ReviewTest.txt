@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: com.example.cooperate.ReviewTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.145 s <<< FAILURE! -- in com.example.cooperate.ReviewTest
+com.example.cooperate.ReviewTest.test_1 -- Time elapsed: 0.047 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because "obj[0]" is null
+	at com.example.cooperate.ReviewTest.test_1(ReviewTest.java:48)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.ReviewTest.test_2 -- Time elapsed: 0.048 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because "obj[0]" is null
+	at com.example.cooperate.ReviewTest.test_2(ReviewTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.ReviewTest.test_3 -- Time elapsed: 0.048 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because "obj[0]" is null
+	at com.example.cooperate.ReviewTest.test_3(ReviewTest.java:79)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

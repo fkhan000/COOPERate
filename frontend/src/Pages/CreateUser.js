@@ -54,7 +54,7 @@ const CreateAccountPage = () => {
                         }
 
             
-            const userDetails = await fetch("http://localhost:8080/Users/username/" + username)
+            const userDetails = await fetch("http://34.224.61.54:8080/Users/username/" + username)
 
             const userExists = await userDetails.json()
 
@@ -96,7 +96,7 @@ const CreateAccountPage = () => {
 
 
 
-            await fetch("http://localhost:8080/createUser", {
+            await fetch("http://34.224.61.54:8080/createUser", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -106,7 +106,7 @@ const CreateAccountPage = () => {
                 })
             });
             
-            const userInfo = await fetch("http://localhost:8080/Users/email/" + email);
+            const userInfo = await fetch("http://34.224.61.54:8080/Users/email/" + email);
             const user = await userInfo.json();
 
 

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: com.example.cooperate.LikeTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.191 s <<< FAILURE! -- in com.example.cooperate.LikeTest
+com.example.cooperate.LikeTest.test_1 -- Time elapsed: 0.051 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "obj[0]" is null
+	at com.example.cooperate.LikeTest.test_1(LikeTest.java:53)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.LikeTest.test_2 -- Time elapsed: 0.048 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "obj[0]" is null
+	at com.example.cooperate.LikeTest.test_2(LikeTest.java:69)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.LikeTest.test_3 -- Time elapsed: 0.045 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "obj[0]" is null
+	at com.example.cooperate.LikeTest.test_3(LikeTest.java:86)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.LikeTest.test_4 -- Time elapsed: 0.045 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "obj[0]" is null
+	at com.example.cooperate.LikeTest.test_4(LikeTest.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

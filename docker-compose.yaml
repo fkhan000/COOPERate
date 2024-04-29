@@ -34,7 +34,7 @@ services:
       - backend
   
   proxy:
-    build: ./ProxyServer
+    build: frontend/ProxyServer
     container_name: proxy
     ports:
      - 8000:8000

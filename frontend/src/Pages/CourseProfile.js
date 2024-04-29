@@ -33,7 +33,7 @@ const CourseProfile = () => {
 
   const fetchRatingDistribution = async () => {
     try {
-      const response = await fetch('http://localhost:8080/getCourseRatings/' + courseData.course_id);
+      const response = await fetch('http://34.224.61.54:8080/getCourseRatings/' + courseData.course_id);
       if (!response.ok) throw new Error('Failed to fetch rating distribution');
       const data = await response.json();
       setRatingDistribution(prevDistribution => ({
@@ -81,7 +81,7 @@ const CourseProfile = () => {
   const fetchCourseData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:8080/Courses/' + localStorage.getItem("view-course"));
+      const response = await fetch('http://34.224.61.54:8080/Courses/' + localStorage.getItem("view-course"));
       if (!response.ok) throw new Error('Failed to fetch');
       const data = await response.json();
       setCourseData({
@@ -106,7 +106,7 @@ const CourseProfile = () => {
   }
 
   const fetchLikeDislikeStatus = async (reviewIds) => {
-    const endpoint = 'http://localhost:8080/user-review';
+    const endpoint = 'http://34.224.61.54:8080/user-review';
 
     var reviewLookup = new Map();
     for (let i = 0; i < reviewIds.length; i++){
@@ -138,7 +138,7 @@ const CourseProfile = () => {
     try {
       // Call the endpoint three times to fetch 6 reviews
       for (let i = 0; i < 3; i++) {
-        const response = await fetch('http://localhost:8080/course_name/' +localStorage.getItem("view-course") + '/Reviews/net_likes/DESC/' + i); // Adjust the endpoint accordingly
+        const response = await fetch('http://34.224.61.54:8080/course_name/' +localStorage.getItem("view-course") + '/Reviews/net_likes/DESC/' + i); // Adjust the endpoint accordingly
         if (!response.ok) throw new Error('Failed to fetch reviews');
         const data = await response.json();
         const reviewIds = data.map(review => review.id);
@@ -158,11 +158,11 @@ const CourseProfile = () => {
 
 
     if (action.slice(0, 2) == "un") {
-      var endpoint = 'http://localhost:8080/removeLike';
+      var endpoint = 'http://34.224.61.54:8080/removeLike';
       var body = JSON.stringify({ liker_id: localStorage.getItem("user_id"), review_id: '' + reviewId});
     }
     else {
-      var endpoint = 'http://localhost:8080/likeReview';
+      var endpoint = 'http://34.224.61.54:8080/likeReview';
   
       
       if (action == 'like'){ var react = '1';}

@@ -110,7 +110,7 @@ const ReviewsPage = () => {
 
   const fetchReviews = async () => {
     if (endFeed) return;
-    let endpoint = `http://localhost:8080`;
+    let endpoint = `http://34.224.61.54:8080`;
   
     if (searchType === 'Professors') {
       endpoint += `/prof_name/${searchQuery}`;
@@ -172,7 +172,7 @@ const ReviewsPage = () => {
   };
   
   const fetchLikeDislikeStatus = async (reviewIds) => {
-    const endpoint = 'http://localhost:8080/user-review';
+    const endpoint = 'http://34.224.61.54:8080/user-review';
 
     var reviewLookup = new Map();
     for (let i = 0; i < reviewIds.length; i++){
@@ -200,7 +200,7 @@ const ReviewsPage = () => {
   
   const fetchOverallRating = async () => {
 
-    var endpoint = 'http://localhost:8080/' + searchType + "/" + searchQuery.toString();
+    var endpoint = 'http://34.224.61.54:8080/' + searchType + "/" + searchQuery.toString();
     
     try {
       const response = await fetch(endpoint);
@@ -284,11 +284,11 @@ const handleLikeDislikeRequest = async (reviewId, action) => {
 
 
   if (action.slice(0, 2) == "un") {
-    var endpoint = 'http://localhost:8080/removeLike';
+    var endpoint = 'http://34.224.61.54:8080/removeLike';
     var body = JSON.stringify({ liker_id: localStorage.getItem("user_id"), review_id: '' + reviewId});
   }
   else {
-    var endpoint = 'http://localhost:8080/likeReview';
+    var endpoint = 'http://34.224.61.54:8080/likeReview';
 
     
     if (action == 'like'){ var react = '1';}

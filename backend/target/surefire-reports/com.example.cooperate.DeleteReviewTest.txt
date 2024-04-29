@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.example.cooperate.DeleteReviewTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.215 s <<< FAILURE! -- in com.example.cooperate.DeleteReviewTest
+com.example.cooperate.DeleteReviewTest.test_1 -- Time elapsed: 0.159 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because "obj[0]" is null
+	at com.example.cooperate.DeleteReviewTest.test_1(DeleteReviewTest.java:45)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.DeleteReviewTest.test_2 -- Time elapsed: 0.054 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because "obj[0]" is null
+	at com.example.cooperate.DeleteReviewTest.test_2(DeleteReviewTest.java:54)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

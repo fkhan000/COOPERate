@@ -164,7 +164,7 @@ public class ReviewDao extends DataAccessObject<Review> {
 
             Review review;
             while (rs.next()) {
-                String csvFile = "/app1/Word_Filter.csv";
+                String csvFile = "./Word_Filter.csv";
                 ProfanityFilter filter = ProfanityFilter.loadBadWordsFromFile(csvFile);
                 String censoredReview = filter.filterProfanity(rs.getString("review"));
                 review = new Review();

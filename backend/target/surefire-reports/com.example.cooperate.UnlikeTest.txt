@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.example.cooperate.UnlikeTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.096 s <<< FAILURE! -- in com.example.cooperate.UnlikeTest
+com.example.cooperate.UnlikeTest.test_1 -- Time elapsed: 0.048 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "obj[0]" is null
+	at com.example.cooperate.UnlikeTest.test_1(UnlikeTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.cooperate.UnlikeTest.test_2 -- Time elapsed: 0.047 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "obj[0]" is null
+	at com.example.cooperate.UnlikeTest.test_2(UnlikeTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
