@@ -182,6 +182,7 @@ const ReviewForm = () => {
         SyllabusData.append('reviewData', JSON.stringify({
             username: localStorage.getItem("username"),
             course_id: formData.courseName,
+            prof_id: formData.professorName,
             year: selectedYear,
             type: "Syllabus",
         }));
@@ -191,6 +192,7 @@ const ReviewForm = () => {
         ExamData.append('reviewData', JSON.stringify({
             username: localStorage.getItem("username"),
             course_id: formData.courseName,
+            prof_id: formData.professorName,
             year: selectedYear,
             type: "Exams" 
         }));
@@ -323,6 +325,7 @@ const ReviewForm = () => {
                     <label htmlFor="syllabusUpload">Upload Syllabus</label>
                     <div style={{ display: 'flex', alignItems: 'center', marginTop: '8px' }}>
                         <input type="file" id="syllabusUpload" name="syllabusUpload" onChange={handleChange} />
+                        
                         <label style={{ marginLeft: '10px', marginRight: '5px', textAlign: 'center'}}>Year Class Taken</label>
                         <select
                             value={selectedYear}

@@ -76,7 +76,6 @@ const CreateAccountPage = () => {
                 
                 const interval = setInterval( () => {
                     const currentUser = auth.currentUser;
-                    console.log(currentUser);
                     if (currentUser && currentUser.emailVerified){
                         clearInterval(interval);
                         resolve();
