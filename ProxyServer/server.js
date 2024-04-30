@@ -28,10 +28,15 @@ function getParent(course, type){
 }
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://cooperate1.s3-website-us-east-1.amazonaws.com/',
   optionsSuccessStatus: 200,
   methods: "GET, POST, PUT, DELETE, OPTIONS",
-  allowedHeaders: "Content-Type, Authorization"
+  //allowedHeaders: "Content-Type, Authorization"
+  headers: {
+              "Access-Control-Allow-Headers" : "Content-Type, Authorization",
+              "Access-Control-Allow-Origin": "http://cooperate1.s3-website-us-east-1.amazonaws.com/",
+              "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+              }
 };
 
 app.use(cors(corsOptions));

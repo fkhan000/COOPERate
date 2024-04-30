@@ -201,29 +201,38 @@ const ReviewForm = () => {
             var examSuccess = true;
             var syllabusLink = "";
             var examLink=  "";
-            
+            console.log("Exam Upload:", formData.examUpload);
+            console.log("Exam Data:", ExamData);
             if(formData.syllabusUpload){
-                const Syresponse = await fetch("http://34.224.61.54:8000/upload", {
+                const Syresponse = await fetch("http://3.85.129.109:8000/upload", {
+                    mode: 'no-cors',
                     method: "POST",
                     body: SyllabusData
                 });
 
-                const syllabusResponse = await Syresponse.json();
+                //const syllabusResponse = await Syresponse.json();
 
                 syllSuccess = Syresponse.ok;
-                syllabusLink = syllabusResponse.link;
+                //syllabusLink = syllabusResponse.link;
+                console.log("Sucessfully uploaded syllabus");
             }
 
+
+            console.log("Exam Upload:", formData.examUpload);
+            console.log("Exam Data:", ExamData);
             if(formData.examUpload){
-                const Exresponse = await fetch("http://34.224.61.54:8000/upload", {
+                const Exresponse = await fetch("http://3.85.129.109:8000/upload", {
+                   mode: 'no-cors',
                     method: "POST",
                     body: ExamData
                 });
 
-                const examResponse = await Exresponse.json();
-                examSuccess = examResponse.ok;
-                examLink = examResponse.link;
+                //const examResponse = await Exresponse.json();
+                examSuccess = Exresponse.ok;
+                //examLink = examResponse.link;
+                console.log("Sucessfully uploaded exam");
             }
+
 
             if (syllSuccess && examSuccess) {
                 setSuccessMessage("Review and file submitted successfully!");
