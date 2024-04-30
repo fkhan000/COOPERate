@@ -56,7 +56,7 @@ const ReviewForm = () => {
     const MAX_FILE_SIZE = 10;
 
 
-
+    const [loading, setLoading] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
     const auth = getAuth();
@@ -106,6 +106,7 @@ const ReviewForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         
         // Check for necessary fields first
         if(formData.courseName === "" || formData.professorName === "") {
@@ -247,6 +248,8 @@ const ReviewForm = () => {
             setError("Failed to submit: " + error.message);
         }
 
+        setLoading(false);
+
         localStorage.setItem('view-user', localStorage.getItem('username'));
         window.location.href = '/Users';
     };
@@ -280,6 +283,7 @@ const ReviewForm = () => {
             </a>
         </div>
         <div className="review-form-container">
+            {loading && <div className="loading-spinner"></div>}
             {successMessage && <div className="success-message">{successMessage}</div>}
             {error && <div className="error-message">{error}</div>}
             <h2>Make A Review</h2>
