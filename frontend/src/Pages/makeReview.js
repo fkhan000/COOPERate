@@ -19,9 +19,10 @@ const ReviewForm = () => {
     });
 
     useEffect(() => {
-        const courseNames = ["Software Engineering", "Integrated Circuit Engineering", "Digital Signal Processing"];
-        const professorNames = ["Christopher Hong", "Jabeom Koo", "Fred Fontaine"];
-    
+
+        const courseNames = ['Communication Theory', 'Computer Operating Systems', 'Data Structures & Algorithms I', 'Data Structures & Algorithms II', 'Differential Equations', 'Digital Signals Processing', 'Discrete Mathematics', 'Linear Algebra', 'Software Engineering'];
+        const professorNames = ['Christopher Hong', 'Sam Keene', 'Fred Fontaine', 'Jeff Hakner', 'Stanislav Mintchev', 'Carl Sable', 'Om Agrawal', 'Abigail Raz'];
+
         $("#courseName").autocomplete({
             source: courseNames,
             select: function(event, ui) {
@@ -109,8 +110,9 @@ const ReviewForm = () => {
         setLoading(true);
         
         // Check for necessary fields first
-        if(formData.courseName === "" || formData.professorName === "") {
+        if(formData.courseName === "" || formData.professorName === "" || formData.courseRating === "" || formData.professorRating === "") {
             setError("Required fields cannot be empty!");
+            setLoading(false);
             return;
         }
 
@@ -130,12 +132,14 @@ const ReviewForm = () => {
 
             if (courseID <= 0) {
                 setError("Course Not Found!");
+                setLoading(false);
                 return;
             }
 
             if(formData.professorName === "")
             {
                 setError("Professor name field cannot be empty!");
+                setLoading(false);
                 return;
             }
             const profDetails = await fetch("http://localhost:8080/Professors/" + formData.professorName);
@@ -147,6 +151,7 @@ const ReviewForm = () => {
 
             if (profID <= 0){
                 setError("Professor Not Found!");
+                setLoading(false);
                 return;
             }
 
@@ -174,6 +179,7 @@ const ReviewForm = () => {
             if (err_code === -1)
             {
                 setError("You already made a review for this course and professor!");
+                setLoading(false);
                 return;
             }
     

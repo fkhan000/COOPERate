@@ -65,8 +65,8 @@ const ReviewsPage = () => {
 
   useEffect(() => {
     const updateAutocompleteSource = () => {
-      const courseNames = ['Software Engineering', 'Integrated Circuit Engineering', 'Digital Signals Processing'];
-      const professorNames = ['Christopher Hong', 'Jabeom Koo', 'Fred Fontaine'];
+      const courseNames = ['Communication Theory', 'Computer Operating Systems', 'Data Structures & Algorithms I', 'Data Structures & Algorithms II', 'Differential Equations', 'Digital Signals Processing', 'Discrete Mathematics', 'Linear Algebra', 'Software Engineering'];
+      const professorNames = ['Christopher Hong', 'Sam Keene', 'Fred Fontaine', 'Jeff Hakner', 'Stanislav Mintchev', 'Carl Sable', 'Om Agrawal', 'Abigail Raz'];
       
       // Determine the source based on the selected search type
       const names = searchType === "Professors" ? professorNames : courseNames;

@@ -13,39 +13,50 @@ url = "http://localhost:8080/makeReview"
 reviewBank = [("loved it!",4, 4), ("hated it!", 1, 2), ("awesome class", 4, 5), ("decent class", 3, 4),
               ("best class ever", 5,5), ("worst class", 1, 1)]
 
-courProf = [(10000, 10000), (10001, 10001), (10001, 10002), (10002, 10003), (10003, 10004)]
 
-courses = ["Software Engineering", "Communication Networks", "Probability Models & Stochastic Processes", "Integrated Circuit Engineering", "Digital Signals Processing"]
 
-profs = ["Christopher Hong", "Sam Keene", "Fred Fontaine", "Jabeom Koo"]
+teaches = {"Christopher Hong": ["Software Engineering"],
+           "Sam Keene": ["Communication Theory", "Digital Signals Processing"],
+           "Jeff Hakner": ["Computer Operating Systems"],
+           "Carl Sable": ["Data Structures & Algorithms I", "Data Structures & Algorithms II"],
+           "Stanislav Mintchev": ["Linear Algebra", "Differential Equations", "Discrete Mathematics"],
+           "Om Agrawal": ["Differential Equations"],
+           "Abigail Raz": ["Discrete Mathematics"],
+           "Fred Fontaine": ["Communication Theory", "Digital Signals Processing"]}
 
-users = ["sam123", "rowdley212", "jack13", "bob14", "cooper11", "dooper11"]
 
-userBank = list(range(10000, 10006))
+courses = dict(zip(["Software Engineering", "Communication Theory", "Data Structures & Algorithms I", "Data Structures & Algorithms II",
+            "Digital Signals Processing", "Differential Equations", "Discrete Mathematics", "Linear Algebra", "Computer Operating Systems"], list(range(10000, 10009))))
+
+profs = dict(zip(['Christopher Hong', 'Sam Keene', 'Fred Fontaine', 'Jeff Hakner', 'Stanislav Mintchev', 'Carl Sable', 'Om Agrawal', 'Abigail Raz'],
+                 list(range(10000, 10008))))
+
+
+userBank = list(range(10000, 10010))
 
 for user in userBank:
-    for pair in courProf:
-        review = random.choice(reviewBank)
-        course_rating = review[1]
-        prof_rating = review[2]
-        review = review[0]
-        
-        prof_id = pair[0]
-        course_id = pair[1]
+    for professor in teaches:
 
-        coursename = courses[pair[1]-10000]
-        profname = profs[pair[0]-10000]
+        for course in teaches[professor]:
 
-        json = {"reviewer_id": str(user),
-            "course_id": str(course_id),
-            "prof_id": str(prof_id),
-            "prof_rating": str(prof_rating),
-            "course_name": coursename,
-            "prof_name": profname,
-            "course_rating": str(course_rating),
-            "review": review,
-            "syllabus_link": "",
-            "exam_link": ""
-            }
-        print(requests.post(url, json = json))
+            review = random.choice(reviewBank)
+            course_rating = review[1]
+            prof_rating = review[2]
+            review = review[0]
+
+            course_id = courses[course]
+            prof_id = profs[professor]
+
+            json = {"reviewer_id": str(user),
+                "course_id": str(course_id),
+                "prof_id": str(prof_id),
+                "prof_rating": str(prof_rating),
+                "course_name": course,
+                "prof_name": professor,
+                "course_rating": str(course_rating),
+                "review": review,
+                "syllabus_link": "",
+                "exam_link": ""
+                }
+            print(requests.post(url, json = json))
         

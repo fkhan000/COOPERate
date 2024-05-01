@@ -78,7 +78,6 @@ const fetchProfessorData = async () => {
         prof_id: data.id
       });
 
-      await fetchRatingDistribution();
     } catch (error) {
       console.error('Error fetching user data:', error);
     } finally {
@@ -125,7 +124,7 @@ const fetchProfessorData = async () => {
     try {
       // Call the endpoint three times to fetch 6 reviews
       for (let i = 0; i < 3; i++) {
-        const response = await fetch('http://localhost:8080/prof_name/' +localStorage.getItem("view-professor") + '/Reviews/net_likes/DESC/' + i); // Adjust the endpoint accordingly
+        const response = await fetch('http://localhost:8080/prof_name/' +localStorage.getItem("view-professor") + '/Reviews/Exact/net_likes/DESC/' + i); // Adjust the endpoint accordingly
         if (!response.ok) throw new Error('Failed to fetch reviews');
         const data = await response.json();
         const reviewIds = data.map(review => review.id);
@@ -386,6 +385,7 @@ const fetchProfessorData = async () => {
           </div>
 
           <div className="rating-chart">
+            
   <Bar
     data={ratingDistribution}
     options={{

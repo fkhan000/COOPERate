@@ -15,7 +15,7 @@ const LoginPage = () => {
     const logIn = async () => {
         try {
             if (!email.endsWith("@cooper.edu")) {
-                setError("Email needs to be a cooper.edu email!");
+                toast.error("Email needs to be a cooper.edu email!");
                 return;
             }
             await signInWithEmailAndPassword(getAuth(), email, password);
@@ -37,14 +37,22 @@ const LoginPage = () => {
           if (err.code === 'auth/invalid-email') {
             toast.error('Invalid email ID');
           }
-          if (err.code === 'auth/user-not-found') {
+          else if (err.code === 'auth/user-not-found') {
               toast.error('Please check your email');
           }
-          if (err.code === 'auth/wrong-password') {
+          else if (err.code === 'auth/wrong-password') {
               toast.error('Please check your password');
           }
-          if (err.code === 'auth/too-many-requests') {
+          else if (err.code === 'auth/too-many-requests') {
               toast.error('Too many attempts, please try again later');
+            
+          }
+          else if (err.code === 'auth/invalid-credential')
+          {
+            toast.error('Invalid email or password')
+          }
+          else {
+            toast.error(err.code);
           }
         }
     };

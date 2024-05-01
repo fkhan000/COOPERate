@@ -104,7 +104,7 @@ const UserProfilePage = () => {
 
   const fetchReviews = async () => {
     if (endFeed) return;
-    let endpoint = 'http://localhost:8080/userName/' + username + '/Reviews';
+    let endpoint = 'http://localhost:8080/userName/' + username + '/Reviews/Exact';
   
     switch (sortOption) {
       case 'time-ascending':
