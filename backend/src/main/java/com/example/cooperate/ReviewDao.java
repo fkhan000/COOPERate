@@ -27,6 +27,10 @@ public class ReviewDao extends DataAccessObject<Review> {
             "WHERE source LIKE '%' || ? || '%' ORDER BY order_by direction " +
             "LIMIT ? OFFSET ?";
 
+    private static final String REVIEWS_EXACT = "SELECT * FROM Reviews " +
+            "WHERE source = ? ORDER BY order_by direction " +
+            "LIMIT ? OFFSET ?";
+
     private static final String LASTVAL = "SELECT last_value FROM review_counter";
 
     public static final String DELETE = "DELETE FROM Reviews WHERE review_id = ?";
@@ -151,6 +155,52 @@ public class ReviewDao extends DataAccessObject<Review> {
         ArrayList<Review> reviews = new ArrayList<Review>();
 
         String command = REVIEWS.replace("source", page.getSource());
+        command = command.replace("order_by", page.getOrderBy());
+        command = command.replace("direction", page.getOrder());
+        try (PreparedStatement statement = this.connection.prepareStatement(command);) {
+
+
+            statement.setString(1, page.getId());
+            statement.setInt(2, page.getNumPerPage());
+            statement.setInt(3, page.getOffset());
+            System.out.println(statement);
+            ResultSet rs = statement.executeQuery();
+
+            Review review;
+            while (rs.next()) {
+                String csvFile = "/app1/Word_Filter.csv";
+                ProfanityFilter filter = ProfanityFilter.loadBadWordsFromFile(csvFile);
+                String censoredReview = filter.filterProfanity(rs.getString("review"));
+                review = new Review();
+                review.setId(rs.getInt("review_id"));
+                review.setUserId(rs.getInt("user_id"));
+                review.setCourseId(rs.getInt("course_id"));
+                review.setProfId(rs.getInt("prof_id"));
+                review.setUsername(rs.getString("username"));
+                review.setCourse_name(rs.getString("course_name"));
+                review.setProf_name(rs.getString("prof_name"));
+                review.setReview(censoredReview);
+                review.setCourseRating(rs.getFloat("course_rating"));
+                review.setProfRating(rs.getFloat("prof_rating"));
+                review.setNetLikes(rs.getInt("net_likes"));
+                review.setOldKarma(rs.getFloat("orig_karma"));
+                review.setTimestamp(rs.getTimestamp("created_at"));
+                review.setSyllabusLink(rs.getString("syllabus_link"));
+                review.setExamLink(rs.getString("exam_link"));
+                reviews.addLast(review);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return reviews;
+    }
+
+    public ArrayList<Review> getReviewsExact(ReviewPage page) {
+        ArrayList<Review> reviews = new ArrayList<Review>();
+
+        String command = REVIEWS_EXACT.replace("source", page.getSource());
         command = command.replace("order_by", page.getOrderBy());
         command = command.replace("direction", page.getOrder());
         try (PreparedStatement statement = this.connection.prepareStatement(command);) {
