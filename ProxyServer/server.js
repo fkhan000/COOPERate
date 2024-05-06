@@ -28,15 +28,10 @@ function getParent(course, type){
 }
 
 const corsOptions = {
-  origin: 'http://cooperate1.s3-website-us-east-1.amazonaws.com/',
+  origin: '*',
   optionsSuccessStatus: 200,
   methods: "GET, POST, PUT, DELETE, OPTIONS",
-  //allowedHeaders: "Content-Type, Authorization"
-  headers: {
-              "Access-Control-Allow-Headers" : "Content-Type, Authorization",
-              "Access-Control-Allow-Origin": "http://cooperate1.s3-website-us-east-1.amazonaws.com/",
-              "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-              }
+  allowedHeaders: "Content-Type, Authorization"
 };
 
 app.use(cors(corsOptions));
@@ -69,7 +64,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 
         reviewData = JSON.parse(req.body.reviewData);
         const fileMetadata = {
-            name: reviewData.course_id + '_' + reviewData.type + '_' +reviewData.year + '_' + reviewData.username,
+            name: reviewData.course_id + '_' + reviewData.prof_id + '_' + reviewData.type + '_' +reviewData.year + '_' + reviewData.username,
             mimeType: req.file.mimetype,
             parents: [getParent(reviewData.course_id, reviewData.type)]
         };

@@ -5,7 +5,7 @@
         "Exams": "1JWT7ZFUbvb56F19xQp7nRjkw5ksuej3U"
     },
 
-    "Integrated Circuit Engineering": {
+    "Computer Operating Systems": {
         "Syllabus": "133ew7QJC987kvuCBsfCBeKOINFvKnBxd",
         "Exams": "10-qPeYXB0hgfQlkJNSMrWJGGUy4JWAzu"
     },
@@ -13,5 +13,33 @@
     "Digital Signals Processing": {
         "Syllabus": "1OboE0EOlhvWy8dy9YvtwKB_DfohymP7o",
         "Exams": "15GbOKXMBHbIfFrMF8R5oe15uxafonwIr"
+    },
+    "Linear Algebra": {
+        "Syllabus": "1zhI7Tb6Repqif2Xzj64EBLGv4FcqeEk6",
+        "Exams": "1WBVU2SGXKKXVzCcHOdHyciuDF41oTDtx"
+    },
+    "Discrete Mathematics": {
+        "Syllabus": "1Zn_rIf1A_aB592HcGD6CLFPgweSbfRG2",
+        "Exams": "1U03jtodJn1SvKiYcyEvtya6ciVocaqCY"
+    },
+
+    "Data Structures & Algorithms I": {
+        "Syllabus": "1LhRfAW3VaqcPaQRK6bah9cmfELrFNtEN",
+        "Exams": "1wumRVGNbaDn-z5EZe7BfXI_aibd5FkVt"
+    },
+
+    "Data Structures & Algorithms II": {
+        "Syllabus": "1IfI2Iaqfmazu--nXOhztj_yVKtADHoT2",
+        "Exams": "1hGLGdVwNm2buPPDH6wHsf76d5jOV5XBX"
+    },
+    "Differential Equations": {
+        "Syllabus": "1JRmvNby-Z8T3wshuugh_iFCz6jkR-NP-",
+        "Exams": "1rt7SY5GXjTlmmdpabDHulhz-siLWJNLX"
+    },
+
+    "Communication Theory": {
+        "Syllabus": "13pXSVOMVM1NCr-iKR6XFaefZldIh2CKP",
+        "Exams": "1lTQdyy8PDZ2mQXLvZFrNh97ubYEDxT5j"
     }
+
 }

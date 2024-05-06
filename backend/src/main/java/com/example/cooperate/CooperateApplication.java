@@ -105,6 +105,41 @@ public class CooperateApplication {
 		}
 		return reviews;
 	}
+
+	@CrossOrigin
+	@GetMapping("/{source}/{name}/Reviews/Exact/{orderedBy}/{order}/{pageNum}")
+	public ArrayList<Review> getReviewsExact(@PathVariable("source") String source,
+										@PathVariable("name") String name,
+										@PathVariable("orderedBy") String orderBy,
+										@PathVariable("order") String order,
+										@PathVariable("pageNum") int pageNum ) {
+
+		ArrayList<Review> reviews = new ArrayList<Review>();
+
+		Connection connection = null;
+		try {
+			connection = dcm.getConnection();
+			ReviewPage page = new ReviewPage(name, source, orderBy, order,
+					2, pageNum*2);
+			ReviewDao reviewDao = new ReviewDao(connection);
+			reviews = reviewDao.getReviewsExact(page);
+
+			System.out.println(reviews);
+		}
+		catch (SQLException var8) {
+			var8.printStackTrace();
+		}
+
+		finally {
+			if (connection != null)
+			{
+				try {connection.close();}
+
+				catch (SQLException e) {}
+			}
+		}
+		return reviews;
+	}
 	@CrossOrigin
 	@GetMapping("/Courses/{courseName}")
 	public Course getByCourseName(@PathVariable("courseName") String courseName) {

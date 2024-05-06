@@ -8,7 +8,9 @@ WORKDIR /app
 COPY package.json package-lock.json /app/
 
 # Install dependencies
-RUN npm install
+RUN npm install -g serve
+
+RUN npm install googleapis
 
 COPY . .
 
