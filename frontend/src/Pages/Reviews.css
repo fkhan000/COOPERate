@@ -1,20 +1,18 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 .banner {
-  background-color: #7289da; /* Discord's brand color */
-  /*padding: 1px;*/
+  background-color: #7289da;
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  position: relative; /* Set position to relative */
-  z-index: 1000; /* Ensure it's above other content */
+  justify-content: flex-end;
+  position: relative;
+  z-index: 1000;
   width: 100%;
 }
 
 .banner-title {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  /*font-family: 'Arial', sans-serif; /* Specify your preferred font family */
-  font-size: 30px; /* Adjust the font size as needed */
-  color: #fff; /* Set text color to white */
-  margin-right: auto; /* Push the title to the left */
+  font-size: 30px;
+  color: #fff;
+  margin-right: auto;
   
 }
 
@@ -40,13 +38,12 @@
   background-color: lightgreen;
 }
 .profile-button {
-  background-color: #4cd137; /* Green color for profile button */
+  background-color: #4cd137;
 }
 
-/* Set icon size */
 .banner .button i, .profile-button i {
   font-size: 18px;
-  margin-right: 5px; /* Add some spacing between icon and text */
+  margin-right: 5px;
 }
 
 body {
@@ -55,7 +52,7 @@ body {
   background-color: #36393f;
   background-size: cover;
   background-position: center;
-  font-family: Arial, sans-serif; /* Add a fallback font */
+  font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -99,17 +96,16 @@ body {
 }
 .search-section {
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding: 10px;
   display: flex;
   align-items: center;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
-  /*flex: 1; /* Take up remaining space */
   border: none;
   padding: 8px;
   border-radius: 5px;
@@ -160,9 +156,9 @@ body {
 }
 
 .review-container a {
-  color: #6e98ec; /* Change color to your desired color */
-  text-decoration: none; /* Remove underline */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
+  color: #6e98ec;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .review-container a:hover {
@@ -174,11 +170,9 @@ body {
   top: 10px;
   left: 10px;
   margin-bottom: 100px;
-  /*display: flex;*/
 }
 
 .ratings-container {
-  /*display: flex;*/
   margin-top: 50px;
   margin-bottom: 10px;
   width: 100px;
@@ -239,7 +233,7 @@ body {
 
 .like-dislike {
   position: absolute;
-  top: 50px; /* Adjust as needed */
+  top: 50px;
   right: 5px;
   display: flex;
   align-items: center;
@@ -267,7 +261,6 @@ body {
 
 }
 
-/* Additional styling for ratings */
 .prof-rating, .course-rating {
   padding: 5px 10px;
   border-radius: 5px;
@@ -293,15 +286,15 @@ body {
 }
 
 .like-icon, .dislike-icon {
-  transition: color 0.2s; /* Add transition effect */
+  transition: color 0.2s;
 }
 
 
 .like-icon:hover, .dislike-icon:hover {
-  color: #007bff; /* Darker color on hover */
+  color: #007bff;
 }
 .highlighted {
-  color: #007bff; /* Darker color */
+  color: #007bff;
 }
 .net-likes {
   font-size: 18px;
@@ -341,7 +334,7 @@ body {
 
 
 .loading-sentinel {
-  height: 1px; /* Minimum height to make it detectable */
+  height: 1px;
   width: 100%;
 }
 

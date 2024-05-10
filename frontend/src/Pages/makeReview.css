@@ -66,12 +66,12 @@ button[type="submit"]:hover {
 .form-group select {
     margin-left: 10px;
     width: auto;
-    height: 40px; /* Align with the height of input elements */
+    height: 40px;
 }
 
 .loading-spinner {
-    border: 8px solid #f3f3f3; /* Light grey background */
-    border-top: 8px solid #3498db; /* Blue */
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
     border-radius: 50%;
     width: 50px;
     height: 50px;
