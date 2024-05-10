@@ -32,6 +32,22 @@ To run this demo, please follow the instructions given below:
 
 <img width="773" alt="image" src="https://github.com/fkhan000/COOPERate/assets/78983433/1a6cbfb9-d934-48af-87bc-23b8db510edd">
 
+## Final Version 5/6/2024
+
+To run this version, please follow the instructions given below:
+
+- Install the latest version of postgreSQL: https://www.postgresql.org/download/
+- Install the latest version of docker desktop: https://docs.docker.com/desktop/install/windows-install/
+- From your terminal, cd into the cooperate directory where the dockerfile is located.
+- Open up docker desktop and enter in the following command into the terminal: docker-compose up --build
+- In a separate terminal, cd into the cooperate/backend/Demo directory
+- Run the populate.py file. This will create the tables for our database and populate our database (ensure that you have a postgres user named "postgres" and password as "password)
+- Finally, once everything is running, you can open up a browser and go to localhost:3000 to start looking through our website
+- Note: Uploading files to the google drive is complicated as it requires exposing the google drive key to the public
+
+- Frontend: localhost:8080
+- Backend: localhost:3000
+- ProxyServer: localhost:8000
 
 ## Code Of Ethics 5/5/2024
 1. Public   
