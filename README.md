@@ -43,7 +43,8 @@ To run this version, please follow the instructions given below:
 - In a separate terminal, cd into the cooperate/backend/Demo directory
 - Run the populate.py file. This will create the tables for our database and populate our database (ensure that you have a postgres user named "postgres" and password as "password)
 - Finally, once everything is running, you can open up a browser and go to localhost:3000 to start looking through our website
-- Note: Uploading files to the google drive is complicated as it requires exposing the google drive key to the public
+- Note: Uploading files to the google drive is complicated as it requires exposing a sensitive google drive key
+- This file should be located within /ProxyServer/Keys/cred.json
 
 - Frontend: localhost:8080
 - Backend: localhost:3000
