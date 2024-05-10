@@ -13,9 +13,9 @@ const port = 8000;
 
 function bufferToStream(buffer) {
     const readable = new Readable();
-    readable._read = () => {}; // _read is required but you can noop it
+    readable._read = () => {};
     readable.push(buffer);
-    readable.push(null); // Indicates the end of the stream
+    readable.push(null);
     return readable;
 }
 

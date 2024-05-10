@@ -66,7 +66,7 @@ const UserProfilePage = () => {
     // Fetch user details
     const fetchUserDetails = async () => {
       try {
-        const userDetailsResponse = await fetch(`http://35.175.189.139:8080/Users/username/${username}`);
+        const userDetailsResponse = await fetch(`http://localhost:8080/Users/username/${username}`);
         if (!userDetailsResponse.ok) throw new Error('Failed to fetch user details');
 
         const userDetailsData = await userDetailsResponse.json();
@@ -104,7 +104,7 @@ const UserProfilePage = () => {
 
   const fetchReviews = async () => {
     if (endFeed) return;
-    let endpoint = 'http://35.175.189.139:8080/userName/' + username + '/Reviews/Exact';
+    let endpoint = 'http://localhost:8080/userName/' + username + '/Reviews/Exact';
   
     switch (sortOption) {
       case 'time-ascending':
@@ -159,7 +159,7 @@ const UserProfilePage = () => {
 
 
   const fetchLikeDislikeStatus = async (reviewIds) => {
-    const endpoint = 'http://35.175.189.139:8080/user-review';
+    const endpoint = 'http://localhost:8080/user-review';
 
     var reviewLookup = new Map();
     for (let i = 0; i < reviewIds.length; i++){
@@ -189,11 +189,11 @@ const UserProfilePage = () => {
 
 
     if (action.slice(0, 2) == "un") {
-      var endpoint = 'http://35.175.189.139:8080/removeLike';
+      var endpoint = 'http://localhost:8080/removeLike';
       var body = JSON.stringify({ liker_id: localStorage.getItem("user_id"), review_id: '' + reviewId});
     }
     else {
-      var endpoint = 'http://35.175.189.139:8080/likeReview';
+      var endpoint = 'http://localhost:8080/likeReview';
   
       
       if (action == 'like'){ var react = '1';}
@@ -301,7 +301,7 @@ const UserProfilePage = () => {
         if (!confirmed) {
           return; // Cancel deletion if user cancels the confirmation
         }
-    var endpoint = 'http://35.175.189.139:8080/DeleteReview/' + review_id + '/' + localStorage.getItem("user_id");
+    var endpoint = 'http://localhost:8080/DeleteReview/' + review_id + '/' + localStorage.getItem("user_id");
     try {
       const response = await fetch(endpoint, {
         method: 'DELETE',
@@ -321,7 +321,7 @@ const UserProfilePage = () => {
     if (review.syllabusLink) {
       const file_id = review.syllabusLink.split("/")[5];
 
-      endpoint = 'http://35.175.189.139:8000/deleteFile/' + file_id;
+      endpoint = 'http://localhost:8080/deleteFile/' + file_id;
   
       try {
         const response = await fetch(endpoint, 
@@ -341,7 +341,7 @@ const UserProfilePage = () => {
       if (review.examLink) {
         const file_id = review.examLink.split("/")[5];
   
-        endpoint = 'http://35.175.189.139:8000/deleteFile/' + file_id;
+        endpoint = 'http://localhost:8080/deleteFile/' + file_id;
     
         try {
           const response = await fetch(endpoint, 

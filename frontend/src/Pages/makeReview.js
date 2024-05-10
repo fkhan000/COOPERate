@@ -122,7 +122,7 @@ const ReviewForm = () => {
         
 
         
-        const courseDetails = await fetch("http://35.175.189.139:8080/Courses/" + formData.courseName);
+        const courseDetails = await fetch("http://localhost:8080/Courses/" + formData.courseName);
             
             
             const courseInfo = await courseDetails.json()
@@ -142,7 +142,7 @@ const ReviewForm = () => {
                 setLoading(false);
                 return;
             }
-            const profDetails = await fetch("http://35.175.189.139:8080/Professors/" + formData.professorName);
+            const profDetails = await fetch("http://localhost:8080/Professors/" + formData.professorName);
 
             const profInfo = await profDetails.json();
 
@@ -157,7 +157,7 @@ const ReviewForm = () => {
 
             const uid = localStorage.getItem("user_id");
 
-            const pckg = await fetch("http://35.175.189.139:8080/makeReview", {
+            const pckg = await fetch("http://localhost:8080/makeReview", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body : JSON.stringify({
@@ -183,7 +183,7 @@ const ReviewForm = () => {
                 return;
             }
     
-        // Assuming all validations pass, prepare data for submission
+        // If all validations pass, prepare data for submission
         const SyllabusData = new FormData();
         SyllabusData.append('file', formData.syllabusUpload);
         SyllabusData.append('reviewData', JSON.stringify({
@@ -195,7 +195,7 @@ const ReviewForm = () => {
         }));
 
         const ExamData = new FormData();
-        ExamData.append('file', formData.examUpload); // Handle the exam file
+        ExamData.append('file', formData.examUpload);
         ExamData.append('reviewData', JSON.stringify({
             username: localStorage.getItem("username"),
             course_id: formData.courseName,
@@ -212,7 +212,7 @@ const ReviewForm = () => {
             var examLink=  "";
             
             if(formData.syllabusUpload){
-                const Syresponse = await fetch("http://35.175.189.139:8000/upload", {
+                const Syresponse = await fetch("http://localhost:8080/upload", {
                     method: "POST",
                     body: SyllabusData
                 });
@@ -224,7 +224,7 @@ const ReviewForm = () => {
             }
 
             if(formData.examUpload){
-                const Exresponse = await fetch("http://35.175.189.139:8000/upload", {
+                const Exresponse = await fetch("http://localhost:8080/upload", {
                     method: "POST",
                     body: ExamData
                 });
@@ -241,7 +241,7 @@ const ReviewForm = () => {
                 }, 5000);
             }
 
-            const updtReview = await fetch ("http://35.175.189.139:8080/updateReview", {
+            const updtReview = await fetch ("http://localhost:8080/updateReview", {
                 method : "POST",
                 body: JSON.stringify({
                     syllabus_link: syllabusLink,

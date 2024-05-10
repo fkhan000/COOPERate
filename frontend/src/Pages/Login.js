@@ -20,7 +20,7 @@ const LoginPage = () => {
             }
             await signInWithEmailAndPassword(getAuth(), email, password);
             
-            const userDetails = await fetch("http://35.175.189.139:8080/Users/email/" + email);
+            const userDetails = await fetch("http://localhost:8080/Users/email/" + email);
 
             const user = await userDetails.json();
 

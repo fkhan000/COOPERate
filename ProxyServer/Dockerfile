@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json package-lock.json /app/
 
 # Install dependencies
-RUN npm install -g serve
+RUN npm install
 
 COPY . .
 
